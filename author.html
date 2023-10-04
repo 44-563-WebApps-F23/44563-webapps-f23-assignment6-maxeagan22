@@ -49,5 +49,32 @@
     }
 </script>
 
+    <div id="imageContainer"><img id="cityImage" src="city1.jpg" alt="City" height="100" width="100"></div>
+
+<script>
+    let useImage = 1; 
+
+    function selectImage(){
+        switch(useImage){
+            case 1:
+                document.getElementById('cityImage').src = 'city2.jpg';
+                useImage = 2;
+                break;
+            case 2:
+                
+                document.getElementById('cityImage').src = 'city3.jpg';
+                useImage = 3;
+                break;
+            case 3:
+                document.getElementById('cityImage').src = 'city1.jpg';
+                useImage = 1;
+                break;
+            default:
+                break;
+        }
+    }
+    document.getElementById('cityImage').onclick = selectImage;
+</script>
+
 </body>
-</html> 
+</html>
