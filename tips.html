@@ -32,9 +32,50 @@
                 const tipTotal = baseAmount * (tipPercentage + (i * 4)) / 100;
                 toShow += `${tipPercentage + (i * 4)}% is calculated ${tipTotal.toFixed(2)}; `;
             }
-            //Display the output
+            //Display the result
             document.getElementById("result").innerHTML = "Tips are: " + toShow;
         }
     </script>
+
+    <form>
+        <input type="radio" id="operationSum" value="sum" onclick="chooseOp()"> 
+        <label for="operationSum">sum</label>
+        <br> 
+        <input type="radio" id="operationDiff" value="difference" onclick="chooseOp()">
+        <label for="operationDiff">diff</label>
+        <br>
+        <input type="radio" id="operationMult" value="product" onclick="chooseOp()">
+        <label for="operationMult">mult</label>
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+        //Function to choose operation
+        function chooseOp(){
+            //Get values from previous inputs
+            const baseAmount = parseFloat(document.getElementById('baseAmount').value);
+            const tipPercentage = parseFloat(document.getElementById('conversionAmount').value);
+
+            //Calculate the result
+            let selectedOperation;
+            let operationName; 
+
+            if(document.getElementById("operationSum").checked){
+                selectedOperation = baseAmount + tipPercentage;
+                operationName = "sum";
+            }else if(document.getElementById("operationDiff").checked){
+                selectedOperation = baseAmount - tipPercentage;
+                operationName = "difference";
+            }else if (document.getElementById("operationMult").checked){
+                selectedOperation = baseAmount * tipPercentage;
+                operationName = "product"; 
+            }
+            //Display the output
+            document.getElementById("output").innerHTML = `${operationName} of ${baseAmount} and ${tipPercentage}
+            is ${selectedOperation.toFixed(2)}`;
+        }
+    </script>
+
 </body>
 </html>
