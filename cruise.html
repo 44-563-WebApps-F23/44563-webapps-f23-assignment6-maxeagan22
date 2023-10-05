@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cruise planning</title>
+</head> 
+
+<body>
+    <h3>Max Eagan goes on a cruise</h3>
+
+    <form>
+        <div class="form-group">
+            <input type="checkbox" id="cabin" value="True">
+            <label for="cabin">Shares Cabin</label>
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="checkbox" id="breakfast" value="True">
+            <label for="breakfast">Breakfast</label>
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="checkbox" id="poolPass" value="False">
+            <label for="poolPass">Pool Pass</label>
+        </div>
+    </form>
+
+    <input type="button" value="Select a cruise" onclick="selectCruise()">
+
+    <div id="result"></div>
+
+    <script>
+        //Global variable
+        let my_cruise = {};
+        function selectCruise(){
+            my_cruise = {}; 
+
+            //Check properties
+            const checkCabin = document.getElementById("cabin");
+            const checkBreakfast = document.getElementById("breakfast");
+            const checkPoolPass = document.getElementById("poolPass");
+            
+            //Set properties based on result
+            my_cruise.checkCabin = checkBreakfast.checked;
+            my_cruise.checkBreakfast = checkBreakfast.checked;
+            my_cruise.checkPoolPass = checkPoolPass.checked;
+
+            document.getElementById("result").innerHTML =  "Shares Cabin: " + my_cruise.checkCabin + "<br>" +
+         "Breakfast: " + my_cruise.checkBreakfast + "<br>" + "Pool Pass: " + my_cruise.checkPoolPass;
+        }
+    </script>
+
+</body>
+</html> 
