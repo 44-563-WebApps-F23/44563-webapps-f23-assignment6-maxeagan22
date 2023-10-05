@@ -7,30 +7,36 @@
 <body>
     <h3>Max Eagan goes on a cruise</h3>
 
-    <form>
+    <form id="cruiseForm">
         <div class="form-group">
             <input type="checkbox" id="cabin" value="True">
             <label for="cabin">Shares Cabin</label>
-        </div>
         <br>
-        <div class="form-group">
             <input type="checkbox" id="breakfast" value="True">
             <label for="breakfast">Breakfast</label>
-        </div>
         <br>
-        <div class="form-group">
             <input type="checkbox" id="poolPass" value="False">
             <label for="poolPass">Pool Pass</label>
+        <br>
+            <input type="text" id="chooseDays" value="days">
+            <label for="chooseDays">Enter the number of days</label>
+        <br>
+            <input type="text" id="cruisePrice" value="price">
+            <label for="cruisePrice">Enter price</label>
         </div>
     </form>
 
     <input type="button" value="Select a cruise" onclick="selectCruise()">
+    <input type="button" value="Update the cruise" onclick="updateCruise()">
 
     <div id="result"></div>
+    <div id="cruiseInfo"></div>
 
     <script>
         //Global variable
         let my_cruise = {};
+
+        //Function to select cruise
         function selectCruise(){
             my_cruise = {}; 
 
@@ -46,6 +52,20 @@
 
             document.getElementById("result").innerHTML =  "Shares Cabin: " + my_cruise.checkCabin + "<br>" +
          "Breakfast: " + my_cruise.checkBreakfast + "<br>" + "Pool Pass: " + my_cruise.checkPoolPass;
+        }
+
+        //Function to update cruise
+        function updateCruise(){
+            //Get value from input
+            const days = parseInt(document.getElementById("chooseDays").value);
+            const price = parseInt(document.getElementById("cruisePrice").value);
+
+            //Set properties
+            my_cruise["days"] = days;
+            my_cruise["price"] = price;
+
+            document.getElementById("cruiseInfo").innerHTML = "Number of days: " + my_cruise.days + "<br>" +
+            "Total Price: " + "$"+my_cruise.price;
         }
     </script>
 
